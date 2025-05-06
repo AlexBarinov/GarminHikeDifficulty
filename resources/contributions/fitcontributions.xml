@@ -1,4 +1,4 @@
 <fitContributions>
-    <fitField id="0" displayInActivitySummary="true" sortOrder="0" precision="0" dataLabel="@Strings.DifficultyLabel" unitLabel="@Strings.DifficultyUnits" />
-    <fitField id="1" displayInChart="true" fillColor="#693F23" sortOrder="1" precision="0" dataLabel="@Strings.DifficultyLabel" chartTitle="@Strings.DifficultyLabel" unitLabel="@Strings.DifficultyUnits" />
+    <fitField id="0" displayInActivitySummary="true" sortOrder="0" precision="2" dataLabel="@Strings.DifficultyLabel" unitLabel="@Strings.DifficultyUnits" />
+    <fitField id="1" displayInChart="true" fillColor="#693F23" sortOrder="1" precision="2" dataLabel="@Strings.DifficultyLabel" chartTitle="@Strings.DifficultyChartTitle" unitLabel="@Strings.DifficultyUnits" />
 </fitContributions>
