@@ -8,6 +8,7 @@ import Toybox.Math;
 class HikeDifficultyView extends WatchUi.SimpleDataField {
 
     private var hikeDifficultyField as FitContributor.Field;
+    private var hikeDifficultyTimeField as FitContributor.Field;
 
     // Set the label of the data field here.
     function initialize() {
@@ -19,7 +20,15 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
             {:mesgType=>FitContributor.MESG_TYPE_SESSION, :units=>"pts"}
         );
 
-        hikeDifficultyField.setData(0);        
+        hikeDifficultyTimeField = createField(
+            "hike_difficulty_time", 1,
+            FitContributor.DATA_TYPE_UINT16,
+            {:mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>"pts"}
+        );
+
+        hikeDifficultyField.setData(0);
+        hikeDifficultyTimeField.setData(0);
+
         label = WatchUi.loadResource(Rez.Strings.DifficultyLabel).toUpper();
     }
 
@@ -57,6 +66,7 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
 
         var difficulty = Math.floor(Math.sqrt(difficultySquared)).toLong();
         hikeDifficultyField.setData(difficulty);
+        hikeDifficultyTimeField.setData(difficulty);
 
         return difficulty;
     }
