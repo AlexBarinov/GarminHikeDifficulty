@@ -1,5 +1,7 @@
 ![](https://repository-images.githubusercontent.com/707907202/af91c724-cff8-4b25-9b9c-9b8fa463266a)
 
+## Hiking Difficulty
+
 This is a data field for Garmin watches that calculates your real time [Shenandoah's Hiking Difficulty](https://www.nps.gov/shen/planyourvisit/how-to-determine-hiking-difficulty.htm). The hike difficulty is based on current distance and elevation gained, and given as a score. 
 
 Based on the score, hikes may be categorized as:
