@@ -1,4 +1,4 @@
-![](https://repository-images.githubusercontent.com/707907202/af91c724-cff8-4b25-9b9c-9b8fa463266a)
+![](https://repository-images.githubusercontent.com/707907202/0225cd17-f3b1-4f68-8c4d-ff00fa814f57)
 
 ## Hiking Difficulty
 
