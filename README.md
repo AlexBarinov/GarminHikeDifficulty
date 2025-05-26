@@ -21,6 +21,10 @@ The calculated difficulty is written into activity and viewable with Garmin Conn
 
 ## Changelog
 
+#### Version [1.6.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.6.0)
+
+- Added support for Forerunner® 570 and Forerunner® 970.
+
 #### Version [1.5.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.5.0)
 
 - Difficulty is stored and displayed in Garmin Connect as a float number. The realtime data field still shows difficulty as an integer for simplicity.
