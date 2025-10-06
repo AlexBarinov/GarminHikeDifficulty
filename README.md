@@ -21,6 +21,10 @@ The calculated difficulty is written into activity and viewable with Garmin Conn
 
 ## Changelog
 
+#### Version [1.7.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.7.0)
+
+- Added support for fēnix® 8 Pro, Instinct® Crossover AMOLED and Venu® 4.
+
 #### Version [1.6.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.6.0)
 
 - Added support for Forerunner® 570 and Forerunner® 970.
