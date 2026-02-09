@@ -47,7 +47,7 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
         // Shenandoah's Hiking Difficulty is determined by a numerical rating
         // using the following formula: 
         //
-        // difficulty = sqrt(2 * e x d)
+        // difficulty = sqrt(2 * e * d)
         //
         // where:
         //      e - elevation gain in feet
@@ -56,7 +56,7 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
         // Because Garmin provides both distance and elevation gain in meters,
         // the formula is refined as
         //
-        // difficulty = sqrt(2 * (e * 3.28084) x (d / 1609.34)) = sqrt(e * d * 0.004077249059)
+        // difficulty = sqrt(2 * (e * 3.28084) * (d / 1609.34)) = sqrt(e * d * 0.004077249059)
         //
 
         var difficultySquared = elapsedDistance * totalAscent * 0.004077249059;
