@@ -21,11 +21,11 @@ The calculated difficulty is written into activity and viewable with Garmin Conn
 
 ## Changelog
 
-#### Version [1.8.1](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.7.0)
+#### Version [1.8.1](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.8.1)
 
 - Changed: Garmin connect also displays difficulty value as an integer.
 
-#### Version [1.8.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.7.0)
+#### Version [1.8.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.8.0)
 
 - Fixed: the field on some watches will always display 0, even if correct data is written into FIT / Garmin Connect.
 - Changed: the difficulty field is now stored as integer in FIT file, twice reducing the data size needed to store it.
@@ -45,8 +45,8 @@ The calculated difficulty is written into activity and viewable with Garmin Conn
 
 #### Version [1.2.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.2.0)
 
-- Changed: Field name was shortened from "Hiking Difficulty" to "Difficulty" to better fit multifields data screen
 - Added: storing current difficulty once per second making a chart possible
+- Changed: field name was shortened from "Hiking Difficulty" to "Difficulty" to better fit multifields data screen
 
 #### Version [1.1.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.1.0)
 
@@ -55,8 +55,8 @@ The calculated difficulty is written into activity and viewable with Garmin Conn
 
 #### Version [1.0.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.0.0)
 
-- Release for all current devices with barometer to measure elevation gain during the hike
-- Moving strings into resources
+- Added: release for all current devices with barometer to measure elevation gain during the hike
+- Changed: Moving strings into resources
 
 #### Version [0.2.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/0.2.0)
 
