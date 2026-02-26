@@ -21,27 +21,37 @@ The calculated difficulty is written into activity and viewable with Garmin Conn
 
 ## Changelog
 
+#### Version [1.8.1](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.7.0)
+
+- Changed: Garmin connect also displays difficulty value as an integer.
+
+#### Version [1.8.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.7.0)
+
+- Fixed: the field on some watches will always display 0, even if correct data is written into FIT / Garmin Connect.
+- Changed: the difficulty field is now stored as integer in FIT file, twice reducing the data size needed to store it.
+- Changed: recompiling the data field with 8.4.1 Connect IQ SDK
+
 #### Version [1.7.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.7.0)
 
-- Added support for fēnix® 8 Pro, Instinct® Crossover AMOLED and Venu® 4.
+- Added: support for fēnix® 8 Pro, Instinct® Crossover AMOLED and Venu® 4.
 
 #### Version [1.6.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.6.0)
 
-- Added support for Forerunner® 570 and Forerunner® 970.
+- Added: support for Forerunner® 570 and Forerunner® 970.
 
 #### Version [1.5.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.5.0)
 
-- Difficulty is stored and displayed in Garmin Connect as a float number. The realtime data field still shows difficulty as an integer for simplicity.
+- Changed: difficulty is stored and displayed in Garmin Connect as a float number. The realtime data field still shows difficulty as an integer for simplicity.
 
 #### Version [1.2.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.2.0)
 
-- Field name was shortened from "Hiking Difficulty" to "Difficulty" to better fit multifields data screen
-- Storing current difficulty once per second making a chart possible
+- Changed: Field name was shortened from "Hiking Difficulty" to "Difficulty" to better fit multifields data screen
+- Added: storing current difficulty once per second making a chart possible
 
 #### Version [1.1.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.1.0)
 
-- Added support for Descent™ MK3, Enduro™ 3, fēnix® 7 Pro, fēnix® 8, fēnix® E, Instinct® 3, Instinct® E
-- Compilation fixes for newer Connect IQ SDK
+- Added: support for Descent™ MK3, Enduro™ 3, fēnix® 7 Pro, fēnix® 8, fēnix® E, Instinct® 3, Instinct® E
+- Fixed: compilation fixes for newer Connect IQ SDK
 
 #### Version [1.0.0](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.0.0)
 
