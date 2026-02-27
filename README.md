@@ -19,6 +19,24 @@ The calculated difficulty is written into activity and viewable with Garmin Conn
 
 ---
 
+## How to Use
+
+This app is a **data field** for Garmin devices. To see the hiking difficulty data in your Garmin Connect activities, you need to follow these steps:
+
+1. **Install the data field** from the [Connect IQ Store](https://apps.garmin.com/apps/97b297da-429d-4fee-abcd-9f86f8d840d4) or through the Garmin Connect app
+2. **Add the data field to your activity's data screen** - this is required to record the difficulty data during your activity
+3. **Complete your activity** - the difficulty data will now be visible in Garmin Connect
+
+**Important:** Simply installing the app is not enough. You must add the data field to your activity's data screen for live tracking. Only then will the final difficulty score and chart appear in Garmin Connect after completing your activity.
+
+### Adding Data Fields to Your Activity
+
+To add this data field to an activity (Hiking, Trail Running, Rucking, etc.):
+- From your Garmin watch: Navigate to the activity settings and add the data field to one of your data screens
+- For detailed instructions, see [Garmin's guide on enabling Connect IQ data fields](https://support.garmin.com/en-US/?faq=gyywAozBuAAGlvfzvR9VZ8)
+
+---
+
 ## Changelog
 
 #### Version [1.8.1](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.8.1)
