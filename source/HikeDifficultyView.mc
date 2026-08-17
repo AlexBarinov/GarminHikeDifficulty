@@ -22,12 +22,12 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
 
         hikeDifficultyTimeField = createField(
             "hike_difficulty_time", 1,
-            FitContributor.DATA_TYPE_UINT16,
+            FitContributor.DATA_TYPE_FLOAT,
             {:mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>"pts"}
         );
 
         hikeDifficultyField.setData(0);
-        hikeDifficultyTimeField.setData(0);
+        hikeDifficultyTimeField.setData(0.0);
 
         label = WatchUi.loadResource(Rez.Strings.DifficultyLabel).toUpper();
     }
@@ -64,11 +64,12 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
             difficultySquared = 0;
         }
 
-        var difficulty = Math.sqrt(difficultySquared).toNumber();
+        var difficulty = Math.sqrt(difficultySquared);
+        var activityDifficulty = Math.ceil(difficulty).toNumber();
 
-        hikeDifficultyField.setData(difficulty);
-        hikeDifficultyTimeField.setData(difficulty);
+        hikeDifficultyField.setData(activityDifficulty);
+        hikeDifficultyTimeField.setData(difficulty.toFloat());
 
-        return difficulty;
+        return activityDifficulty;
     }
 }

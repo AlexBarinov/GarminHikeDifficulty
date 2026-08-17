@@ -24,6 +24,7 @@
             <iq:product id="d2deltas"/>
             <iq:product id="d2mach1"/>
             <iq:product id="descentg1"/>
+            <iq:product id="descentg2"/>
             <iq:product id="descentmk1"/>
             <iq:product id="descentmk2"/>
             <iq:product id="descentmk2s"/>
@@ -109,6 +110,7 @@
             <iq:product id="venu441mm"/>
             <iq:product id="venu445mm"/>
             <iq:product id="venud"/>
+            <iq:product id="venux1"/>
             <iq:product id="vivoactive3"/>
             <iq:product id="vivoactive3d"/>
             <iq:product id="vivoactive3m"/>

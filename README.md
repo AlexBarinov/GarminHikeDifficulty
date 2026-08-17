@@ -39,6 +39,11 @@ To add this data field to an activity (Hiking, Trail Running, Rucking, etc.):
 
 ## Changelog
 
+#### Version 1.9.0
+
+- Added: support for Descent™ G2 and Venu® X1.
+- Changed: rebuilt with Connect IQ SDK 9.2.
+
 #### Version [1.8.1](https://github.com/AlexBarinov/GarminHikeDifficulty/releases/tag/1.8.1)
 
 - Changed: Garmin connect also displays difficulty value as an integer.
