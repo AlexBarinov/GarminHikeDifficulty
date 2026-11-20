@@ -7,3 +7,5 @@ internal-mir/
 *.prg
 *.prg.debug.xml
 *-fit_contributions.json
+*.der
+developer_key*
