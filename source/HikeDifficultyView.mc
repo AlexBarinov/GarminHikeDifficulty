@@ -1,9 +1,9 @@
 import Toybox.Activity;
+import Toybox.FitContributor;
 import Toybox.Lang;
+import Toybox.Math;
 import Toybox.Time;
 import Toybox.WatchUi;
-import Toybox.FitContributor;
-import Toybox.Math;
 
 class HikeDifficultyView extends WatchUi.SimpleDataField {
 
@@ -72,30 +72,11 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
             return cachedDifficulty != null ? Math.ceil(cachedDifficulty).toNumber() : null;
         }
 
-        //
-        // Shenandoah's Hiking Difficulty is determined by a numerical rating
-        // using the following formula: 
-        //
-        // difficulty = sqrt(2 * e * d)
-        //
-        // where:
-        //      e - elevation gain in feet
-        //      d - distance in miles
-        //
-        // Because Garmin provides both distance and elevation gain in meters,
-        // the formula is refined as
-        //
-        // difficulty = sqrt(2 * (e * 3.28084) * (d / 1609.34)) = sqrt(e * d * 0.004077249059)
-        //
-
-        var difficultySquared = elapsedDistance * totalAscent.toFloat() * 0.004077249059;
-        if (difficultySquared < 0) {
-            difficultySquared = 0;
-        }
-
-        var difficulty = Math.sqrt(difficultySquared);
-        var difficultyFloat = difficulty.toFloat();
-        var difficultyInt = Math.ceil(difficulty).toNumber();
+        var difficultyFloat = HikeDifficultyView.calculateDifficulty(
+            elapsedDistance,
+            totalAscent.toFloat()
+        );
+        var difficultyInt = Math.ceil(difficultyFloat).toNumber();
 
         var prevDifficulty = lastDifficulty;
         if (prevDifficulty == null || difficultyFloat != prevDifficulty) {
@@ -112,5 +93,51 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
         }
 
         return difficultyInt;
+    }
+
+    static function calculateDifficulty(
+        elapsedDistance as Float,
+        totalAscent as Float
+    ) as Float {
+        if (!(elapsedDistance > 0.0) || !(totalAscent > 0.0)) {
+            return 0.0;
+        }
+
+        //
+        // Shenandoah's Hiking Difficulty is determined by a numerical rating
+        // using the following formula:
+        //
+        // difficulty = sqrt(2 * e * d)
+        //
+        // where:
+        //      e - elevation gain in feet
+        //      d - distance in miles
+        //
+        // Because Garmin provides both distance and elevation gain in meters
+        // (1 ft = 0.3048 m, 1 mi = 1609.344 m), the formula is refined as:
+        //
+        // difficulty = sqrt(2 * (e / 0.3048) * (d / 1609.344))
+        //            = sqrt(e * d * 0.004077238794689)
+        //
+        var metersConversionFactor = 0.004077238794689d;
+        var maxDifficulty = 2147483520.0d; // Largest exact Float below INT32_MAX
+
+        var difficultySquared =
+            elapsedDistance.toDouble() *
+            totalAscent.toDouble() *
+            metersConversionFactor;
+        if (!(difficultySquared > 0.0d)) {
+            return 0.0;
+        }
+
+        var difficulty = Math.sqrt(difficultySquared).toDouble();
+        if (!(difficulty >= 0.0d)) {
+            return 0.0;
+        }
+        if (difficulty >= maxDifficulty) {
+            return maxDifficulty.toFloat();
+        }
+
+        return difficulty.toFloat();
     }
 }
