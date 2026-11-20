@@ -7,29 +7,55 @@ import Toybox.Math;
 
 class HikeDifficultyView extends WatchUi.SimpleDataField {
 
-    private var hikeDifficultyField as FitContributor.Field;
-    private var hikeDifficultyTimeField as FitContributor.Field;
+    private var hikeDifficultyField as FitContributor.Field?;
+    private var hikeDifficultyTimeField as FitContributor.Field?;
 
     // Set the label of the data field here.
     function initialize() {
         SimpleDataField.initialize();
 
-        hikeDifficultyField = createField(
-            "hike_difficulty", 0,
-            FitContributor.DATA_TYPE_FLOAT,
-            {:mesgType=>FitContributor.MESG_TYPE_SESSION, :units=>"pts"}
+        var units = WatchUi.loadResource(Rez.Strings.DifficultyUnits) as String;
+        hikeDifficultyField = createDifficultyField(
+            "hike_difficulty",
+            0,
+            FitContributor.MESG_TYPE_SESSION,
+            units
+        );
+        hikeDifficultyTimeField = createDifficultyField(
+            "hike_difficulty_time",
+            1,
+            FitContributor.MESG_TYPE_RECORD,
+            units
         );
 
-        hikeDifficultyTimeField = createField(
-            "hike_difficulty_time", 1,
-            FitContributor.DATA_TYPE_FLOAT,
-            {:mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>"pts"}
-        );
+        var sessionField = hikeDifficultyField;
+        if (sessionField != null) {
+            sessionField.setData(0.0);
+        }
+        var recordField = hikeDifficultyTimeField;
+        if (recordField != null) {
+            recordField.setData(0.0);
+        }
 
-        hikeDifficultyField.setData(0.0);
-        hikeDifficultyTimeField.setData(0.0);
+        label = (WatchUi.loadResource(Rez.Strings.DifficultyLabel) as String).toUpper();
+    }
 
-        label = WatchUi.loadResource(Rez.Strings.DifficultyLabel).toUpper();
+    private function createDifficultyField(
+        name as String,
+        fieldId as Number,
+        mesgType as FitContributor.MessageType,
+        units as String
+    ) as FitContributor.Field? {
+        try {
+            return createField(
+                name,
+                fieldId,
+                FitContributor.DATA_TYPE_FLOAT,
+                {:mesgType => mesgType, :units => units}
+            );
+        } catch (ex) {
+            return null;
+        }
     }
 
     function compute(info as Activity.Info) as Numeric or Duration or String or Null {
@@ -68,8 +94,14 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
         var difficultyFloat = difficulty.toFloat();
         var difficultyInt = Math.ceil(difficulty).toNumber();
 
-        hikeDifficultyField.setData(difficultyFloat);
-        hikeDifficultyTimeField.setData(difficultyFloat);
+        var sessionField = hikeDifficultyField;
+        if (sessionField != null) {
+            sessionField.setData(difficultyFloat);
+        }
+        var recordField = hikeDifficultyTimeField;
+        if (recordField != null) {
+            recordField.setData(difficultyFloat);
+        }
 
         return difficultyInt;
     }
