@@ -9,10 +9,13 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
 
     private var hikeDifficultyField as FitContributor.Field?;
     private var hikeDifficultyTimeField as FitContributor.Field?;
+    private var lastDifficulty as Float?;
 
     // Set the label of the data field here.
     function initialize() {
         SimpleDataField.initialize();
+
+        lastDifficulty = null;
 
         var units = WatchUi.loadResource(Rez.Strings.DifficultyUnits) as String;
         hikeDifficultyField = createDifficultyField(
@@ -27,15 +30,6 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
             FitContributor.MESG_TYPE_RECORD,
             units
         );
-
-        var sessionField = hikeDifficultyField;
-        if (sessionField != null) {
-            sessionField.setData(0.0);
-        }
-        var recordField = hikeDifficultyTimeField;
-        if (recordField != null) {
-            recordField.setData(0.0);
-        }
 
         label = (WatchUi.loadResource(Rez.Strings.DifficultyLabel) as String).toUpper();
     }
@@ -58,15 +52,24 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
         }
     }
 
+    function onTimerReset() as Void {
+        lastDifficulty = null;
+    }
+
     function compute(info as Activity.Info) as Numeric or Duration or String or Null {
-        var elapsedDistance = 0.0;
-        if (info.elapsedDistance != null) {
-            elapsedDistance = info.elapsedDistance;
+        if (Activity has :TIMER_STATE_OFF && info has :timerState) {
+            var timerState = info.timerState;
+            if (timerState != null && timerState == Activity.TIMER_STATE_OFF) {
+                lastDifficulty = null;
+                return null;
+            }
         }
 
-        var totalAscent = 0.0;
-        if (info.totalAscent != null) {
-            totalAscent = info.totalAscent;
+        var elapsedDistance = info.elapsedDistance;
+        var totalAscent = info.totalAscent;
+        if (elapsedDistance == null || totalAscent == null) {
+            var cachedDifficulty = lastDifficulty;
+            return cachedDifficulty != null ? Math.ceil(cachedDifficulty).toNumber() : null;
         }
 
         //
@@ -85,7 +88,7 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
         // difficulty = sqrt(2 * (e * 3.28084) * (d / 1609.34)) = sqrt(e * d * 0.004077249059)
         //
 
-        var difficultySquared = elapsedDistance * totalAscent * 0.004077249059;
+        var difficultySquared = elapsedDistance * totalAscent.toFloat() * 0.004077249059;
         if (difficultySquared < 0) {
             difficultySquared = 0;
         }
@@ -94,13 +97,18 @@ class HikeDifficultyView extends WatchUi.SimpleDataField {
         var difficultyFloat = difficulty.toFloat();
         var difficultyInt = Math.ceil(difficulty).toNumber();
 
-        var sessionField = hikeDifficultyField;
-        if (sessionField != null) {
-            sessionField.setData(difficultyFloat);
-        }
-        var recordField = hikeDifficultyTimeField;
-        if (recordField != null) {
-            recordField.setData(difficultyFloat);
+        var prevDifficulty = lastDifficulty;
+        if (prevDifficulty == null || difficultyFloat != prevDifficulty) {
+            lastDifficulty = difficultyFloat;
+
+            var sessionField = hikeDifficultyField;
+            if (sessionField != null) {
+                sessionField.setData(difficultyFloat);
+            }
+            var recordField = hikeDifficultyTimeField;
+            if (recordField != null) {
+                recordField.setData(difficultyFloat);
+            }
         }
 
         return difficultyInt;
