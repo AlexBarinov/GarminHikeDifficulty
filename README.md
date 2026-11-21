@@ -13,6 +13,8 @@ Based on the score, hikes may be categorized as:
  - Challenging (250–499)
  - Bomber (500+)
 
+*Note: The official Shenandoah NPS scale defines the first five tiers (ending at Very Strenuous, 200+); Challenging and Bomber are extended tiers.*
+
 The calculated difficulty is written into activity and viewable with Garmin Connect as a hike difficulty and as a chart. This metric is handy when you compare your two hikes, challenge yourself or track your progress.
 
 [<img src="https://developer.garmin.com/static/available-badge-9e49ebfb7336ce47f8df66dfe45d28ae.svg" width="250">](https://apps.garmin.com/apps/97b297da-429d-4fee-abcd-9f86f8d840d4)
